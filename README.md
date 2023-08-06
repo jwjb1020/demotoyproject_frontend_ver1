@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 작업내용
+## 2023.07.31 새벽
+- 리액트로 회원가입 페이지 작성
+- spring boot 이용해서 데이터 베이스연결 및 페이지 연결 확인
+- axios 패키지 다운로드(post,get방식 정해서 보낼 수 있음)
+- node.js 다운그레이드
+- 회원가입 페이지 생성
+## 2023.07.31
+- 로그인 페이지 생성
+- 밑에 코드 터미널에서 입력
+    <code>
+        npm install zustand
+        npm install react-cookie
+    </code>
+- 사용한 워크프레임
+사이트: [mui](https://mui.com)
+- extension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    spinnet
 
-## Available Scripts
+## 2023.08.01
+- 쿠키에 값을 저장해서 로그인상태 유지가능
+- 로그인할때 받아온 user의 데이터를 스토어에 저장해서 사용
 
-In the project directory, you can run:
+## 2023.08.04
+- 피그마를 사용해 전체적인 페이지 구성
+- 기본적으로 적응형 페이지가 아니라서 화면 크기마다 달라지는 것을 염두해야함.
+- 블로그에서 로그인과 회원가입이 같이 있는 코드를 가져옴
+        
+        -> 하지만 html, css, js로 되어 있어 js는 react에서 사용가능하게 useState나 useEffect를 이용해서 변형해야함.
+- 이미지의 상대 경로가 안되서 교수님께 여쪄보아야함.
+- 피그마를 사용해서 대략적인 메인 페이지를 구성함
+- header와 footer를 만듬, 하지만 부족함.         
+## 2023.08.04 
+- 피그마를 이용해서 적응형 페이지 만들기 한계를 느낌.
+- tailwind라는 css 라이브러리를 활용해 페이지를 만들고 있음.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 2023.08.06
+- tailwind를 활용해 컴포넌트로 button, footer, header, nav를 만듬.
+- mainpage - nav에 있는 버튼을 누르면 원래 있던 로그인 페이지로 이동하게 하기 위해 react-router를 사용함.
