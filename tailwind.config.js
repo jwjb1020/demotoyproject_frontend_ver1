@@ -8,6 +8,6 @@ module.exports = {
       Cafe24Shiningstar: ["Cafe24Shiningstar"],
     },
   },
-  plugins: [],
+  plugins: [ require('@tailwindcss/forms')],
 }
 

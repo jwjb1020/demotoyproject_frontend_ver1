@@ -5,7 +5,7 @@ import React from "react"
 
 export default function MyHeader() {
     return (
-        <div className="relative isolate overflow-hidden bg-[#FFCCCC] py-24 sm:py-32">
+        <div className="relative isolate overflow-hidden bg-[#cce8ff] py-24 sm:py-32">
 
             <div
                 className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"

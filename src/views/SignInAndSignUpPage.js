@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Cookies, useCookies } from 'react-cookie';
 import { userUserStore } from '../stores';
 import './SignInAndSignUpPage.css';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { isLoggedInState } from '../recoilState';
 
 export default function SignInAddSignUpPage() {
 
@@ -16,10 +19,15 @@ export default function SignInAddSignUpPage() {
     const [userName, setUserName] = useState("");
     const [userPasswordCheck, setUserPasswordCheck] = useState("");
 
+    const navigate = useNavigate();
+    const isLogin = useSetRecoilState(isLoggedInState);
+
+    const ipAddress = "http://localhost:8080"
+
     useEffect(() => {
         setTimeout(() => {
             setIsSignUp(true);
-        }, 3000);
+        }, 30000);
     }, []);
 
     const handleToggle = () => {
@@ -37,7 +45,7 @@ export default function SignInAddSignUpPage() {
             userPassword
         };
 
-        axios.post("http://localhost:8080/api/auth/signIn", data, { withCredentials: true })
+        axios.post(`${ipAddress}/api/auth/signIn`, data, { withCredentials: true })
             .then((response) => {
                 const responseData = response.data;
                 console.log(responseData);
@@ -53,6 +61,14 @@ export default function SignInAddSignUpPage() {
 
                 setCookies("token", token, { expires });
                 setUser(userMember);
+                
+                //로그인 했을때 로그인 정보 전역 변수로 설정
+                isLogin(true)
+                //로그인 성공했을때 메인페이지로 돌아옴
+                navigate("/");
+
+
+
             })
             .catch((error) => {
                 alert("로그인에 실패했습니다(data).");
@@ -67,12 +83,14 @@ export default function SignInAddSignUpPage() {
             userName
         };
 
-        axios.post("http://localhost:8080/api/auth/signUp", data, { withCredentials: true })
+        axios.post(`${ipAddress}/api/auth/signUp`, data, { withCredentials: true })
             .then((response) => {
                 const responseData = response.data;
                 alert(responseData.message);
                 console.log(response.data);
                 console.log("연결성공");
+                setIsSignUp(false)
+                
             })
             .catch((error) => {
                 console.error(error);
@@ -125,7 +143,9 @@ export default function SignInAddSignUpPage() {
                                 <i className='bx bxs-lock-alt'></i>
                                 <input type="password" placeholder="Password" onChange={(e) => { setUserPassword(e.target.value) }} />
                             </div>
+                           
                             <button onClick={() => SignInHandler()}>로그인</button>
+                           
                             <p>
                                 <b>
                                     비밀번호를 잊으셨나요?
