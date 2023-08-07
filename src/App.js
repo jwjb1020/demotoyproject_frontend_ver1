@@ -12,14 +12,15 @@ import {
 
 function App() {
   return (
-   <div >
-    <RecoilRoot>
+    
+    <RecoilRoot >
+      
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<SignInAddSignUpPage />} />
       </Routes>
     </RecoilRoot>
-    </div>
+ 
   );
 }
 
