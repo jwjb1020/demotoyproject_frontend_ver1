@@ -8,6 +8,7 @@ module.exports = {
       Cafe24Shiningstar: ["Cafe24Shiningstar"],
     },
   },
-  plugins: [ require('@tailwindcss/forms')],
+  plugins: [ require('@tailwindcss/forms'),
+  require('tailwind-scrollbar-hide')],
 }
 

@@ -9,6 +9,8 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
+import SearchButton from './components/SearchButton';
+import SearchPage from './views/SearchPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<SignInAddSignUpPage />} />
+        <Route path='/search' element={<SearchButton/>}/>
+        <Route path='/searchPage' element={<SearchPage/>}/>
       </Routes>
     </RecoilRoot>
  
