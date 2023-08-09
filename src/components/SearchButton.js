@@ -10,21 +10,15 @@ export default function SearchButton() {
   const navigate =useNavigate();
 
   const FindHandler = () => {
-    const data = {
-      // findLocation,
-      // findAcommodation,
-      // festivalName.current
-    }
-    // 요청 설정
-   
-  
+
     console.log(festivalName.current.value)
-    axios.get(`http://localhost:8080/search/find?festivalName=${festivalName.current.value}`)
+    axios.get(`http://localhost:8080/search/findall?festivalName=${festivalName.current.value}`)
       .then((response) => {
 
         const responseData = response.data;
         console.log('Response:', responseData);
         
+        // navigate로 데이터 넣어서 전달할때 이런형식으로 보내야함
         navigate("/searchPage",
           {state : {
             data: responseData

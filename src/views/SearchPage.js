@@ -7,6 +7,7 @@ import MyMapTable from '../components/MyMapTable';
 
 export default function SearchPage() {
 
+    //navigate로 전달한 데이터 받을때는 uselocation써야함
     const location = useLocation();
     let data = null;
 
@@ -14,7 +15,7 @@ export default function SearchPage() {
         data = location.state.data;
 
         console.log("데이터 넘어옴", data);
-        // const datalist =
+       
         const datalist = data.map((data, index) => {
             console.log(data, index);
         })
@@ -29,9 +30,9 @@ export default function SearchPage() {
     return (
         <div>
             <MyNav />
-            <div className='flex justify-center'>
-                <MyMapTable />
-                <MyMap />
+            <div className='flex justify-center '>
+                <MyMapTable data={data} />
+                <MyMap data={data} />
             </div>
             <SearchButton />
 
