@@ -1,8 +1,8 @@
-import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import MyButton from './MyButton'
-import { useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+
 
 
 
@@ -11,13 +11,18 @@ function classNames(...classes) {
 }
 
 export default function MyNav() {
-    const navigate = useNavigate();
+    const location = useLocation();
+ 
+
+    //각각의 페이지일때 표시해주는 기능 
     const navigation = [
-        { name: 'Home', href: '#', current: false },
-        { name: 'Team', href: '#', current: false },
-        { name: 'Projects', href: '#', current: false },
-        { name: 'Calendar', href: '#', current: false },
-    ]
+        { name: 'Home', href: '/', current: location.pathname === '/' },
+        { name: 'Search', href: '/searchPage', current: location.pathname === '/searchPage' },
+        { name: 'Festival', href: '/festival', current: location.pathname === '/festival' },
+        { name: 'Accomodation', href: '/accomodation', current: location.pathname === '/accomodation' },
+    ];
+
+
 
     return (
         <Disclosure as="nav" className="bg-[#714288] opacity-30">
@@ -43,15 +48,14 @@ export default function MyNav() {
                                         className="h-8 w-auto hover:scale-110"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                         alt="Your Company"
-                                        onClick={() =>navigate("/")}
                                     />
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
+                                            <Link
                                                 key={item.name}
-                                                href={item.href}
+                                                to={item.href}
                                                 className={classNames(
                                                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                     'rounded-md px-3 py-2 text-sm font-medium'
@@ -59,20 +63,21 @@ export default function MyNav() {
                                                 aria-current={item.current ? 'page' : undefined}
                                             >
                                                 {item.name}
-                                            </a>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            
-                               {/* 로그인버튼 */}
+
+                                {/* 로그인버튼 */}
                                 <Menu as="div" className="relative ml-3">
                                     <div>
                                         <MyButton />
                                     </div>
-                                
+
                                 </Menu>
+
                             </div>
                         </div>
                     </div>
