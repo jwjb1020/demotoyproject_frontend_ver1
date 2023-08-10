@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function MyMapTable(props) {
   console.log("테이블 데이터", props)
@@ -23,9 +24,11 @@ export default function MyMapTable(props) {
       </thead>
       <tbody>
       {festivalNameAndAddress.map((festivalNameAndAddress,idex) => (
+        
           <tr key={idex}>
-            <td className="border border-slate-300 ...">{festivalNameAndAddress[0]}</td>
-            <td className="border border-slate-300 ...">{festivalNameAndAddress[1]}</td> {/* 주소 데이터가 어떻게 제공되는지에 따라 수정해주세요 */}
+            
+            <td className="border border-slate-300 ... hover:scale-110" > <Link to="/DetailPage">{festivalNameAndAddress[0]}</Link></td>
+            <td className="border border-slate-300 ...">{festivalNameAndAddress[1]==null ? "위치정보가 없습니다" : festivalNameAndAddress[1]}</td>
           </tr>
         ))}
     

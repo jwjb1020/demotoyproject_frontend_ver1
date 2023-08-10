@@ -16,9 +16,9 @@ export default function SearchPage() {
 
         console.log("데이터 넘어옴", data);
        
-        const datalist = data.map((data, index) => {
-            console.log(data, index);
-        })
+        // const datalist = data.map((data, index) => {
+        //     console.log(data, index);
+        // })
        
 
     } else {

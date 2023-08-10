@@ -11,6 +11,7 @@ import {
 } from 'recoil';
 import SearchButton from './components/SearchButton';
 import SearchPage from './views/SearchPage';
+import DetailPage from './views/DetailPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/login' element={<SignInAddSignUpPage />} />
         <Route path='/search' element={<SearchButton/>}/>
         <Route path='/searchPage' element={<SearchPage/>}/>
+        <Route path="/DetailPage" element={<DetailPage/>}/>
       </Routes>
     </RecoilRoot>
  

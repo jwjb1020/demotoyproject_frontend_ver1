@@ -3,17 +3,22 @@ import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchButton() {
-  const [findLocation, setFindLocation] = useState("");
-  const [findAcommodation, setFindAcmmodation] = useState("")
-  const festivalName = useRef(null)
+  const [festivalName,setFestivalName]= useState(null)
+ 
 
   const navigate =useNavigate();
 
   const FindHandler = () => {
 
-    console.log(festivalName.current.value)
-    axios.get(`http://localhost:8080/search/findall?festivalName=${festivalName.current.value}`)
+    
+    axios.get(`http://localhost:8080/search/findall?festivalName=${festivalName}`)
       .then((response) => {
+        //만약에 입력칸에 아무것도 없으면 알림 띄우기
+        if (!festivalName) {
+          console.log("축제를 입력해주세요.");
+          alert("축제를 입력해주세요.")
+          return;
+        }
 
         const responseData = response.data;
         console.log('Response:', responseData);
@@ -38,35 +43,6 @@ export default function SearchButton() {
         className="my-1 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-80 dark:opacity-100"
       />
       <div className='flex justify-evenly w-full bg-[#dfc5df] py-8 opacity-70 '>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            location
-          </label>
-          <input
-            id="location"
-            name="location"
-            type="text"
-            placeholder='지역을 입력해주세요.'
-
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e) => setFindLocation(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            acommodation
-          </label>
-          <input
-            id="acommodation"
-            name="acommodation"
-            type="text"
-            placeholder='숙소를 입력해주세요.'
-
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            onChange={(e) => setFindAcmmodation(e.target.value)}
-          />
-        </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
             festival
@@ -78,8 +54,7 @@ export default function SearchButton() {
             placeholder='축제를 입력해주세요.'
             required
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            // onChange={(e) => setFestivalName(e.target.value)}
-            ref={festivalName}
+            onChange={(e) => setFestivalName(e.target.value)}
           />
         </div>
 
