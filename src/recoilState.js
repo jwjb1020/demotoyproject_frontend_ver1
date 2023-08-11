@@ -9,3 +9,8 @@ export const searchResultState = atom({
   key:"searchResultState",
   default:[],
 });
+//위치정보 저장하는 아톰
+export const locationResultState = atom({
+  key: "locationResultState",
+  default: [],
+})  

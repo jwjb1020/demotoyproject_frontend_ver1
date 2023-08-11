@@ -1,38 +1,64 @@
-import React from 'react';
-import { Map, MapMarker } from "react-kakao-maps-sdk";
-export default function MyMap(props) {
-  console.log("맵 데이터", props)
-  if (!props.data) {
-    console.log("Data not available");
-    return null; // 데이터가 없을 경우 빈 화면을 반환
-  }
+import React, { useEffect, useRef, useState } from 'react';
+import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
+export default function MyMap(probs) {
+  //처리해야해 ㅠㅠㅠ
+  const [state, setState] = useState()
 
-  const nameAndLatLng = props.data.map(item => [item.festivalName, item.latitude, item.longitude])
-  console.log("nameAndLatLng", nameAndLatLng)
+  const latitude = probs.latitude;
+  const longitude = probs.longitude;
+  const festivalName = probs.festivalName;
+
+  console.log("map콘솔" + latitude, longitude, festivalName);
+
+
+  const mapRef = useRef()
+  const [style, setStyle] = useState({
+    width: "100%",
+    height: "450px",
+  })
+
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (map) map.relayout()
+  }, [style])
+
+
 
 
   return (
 
-    <Map
-      center={{ lat: 36.477078, lng: 128.026691 }}   // 지도의 중심 좌표
-      style={{ width: '800px', height: '600px' }} // 지도 크기
-      level={14}                                   // 지도 확대 레벨
-    >
-      {nameAndLatLng.map((nameAndLatLng, index) => {
-        const [name, lat, lng] = nameAndLatLng;
 
-        // 유효한 lat와 lng 값을 가지는 경우에만 MapMarker를 생성합니다.
-        if (lat !== null && lng !== null) {
-          return (
-            <MapMarker key={index} position={{ lat: parseFloat(lat), lng: parseFloat(lng) }}>
-              <div style={{ color: "#070" }}>{name}</div>
-            </MapMarker>
-          );
-        }
+    <>
+      <Map
+        center={{
+          // 지도의 중심좌표
+          lat: latitude,
+          lng: longitude,
+        }}
+        style={style}
+        level={4} // 지도의 확대 레벨
+        ref={mapRef}
+        onCenterChanged={(map) => setState({
+          level: map.getLevel(),
+          center: {
+            lat: map.getCenter().getLat(),
+            lng: map.getCenter().getLng(),
+          }
+        })}
+      // 지도 확대 레벨
+      >
+        <ZoomControl />
 
-        return null; // 유효한 데이터가 아닌 경우 MapMarker를 생성하지 않습니다.
-      })}
-    </Map>
-
+        <MapMarker position={{ lat: parseFloat(latitude), lng: parseFloat(longitude) }}>
+          <div style={{ color: "#070" }}>{festivalName}</div>
+        </MapMarker>
+      </Map>
+      <button
+        onClick={() => setStyle({ width: "100%", height: "450px" })}
+      >
+        지도 크기 바꾸기
+      </button>
+    </>
   );
 }

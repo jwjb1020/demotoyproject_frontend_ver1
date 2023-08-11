@@ -53,7 +53,7 @@ export default function SearchButton() {
       <div className='flex justify-evenly w-full bg-[#dfc5df] py-8 opacity-70 '>
         <div>
           <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-            festival
+            Festival
           </label>
           <input
             id=" festival"

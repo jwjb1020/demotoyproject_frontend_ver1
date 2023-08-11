@@ -36,7 +36,6 @@ export default function SearchPage() {
           
             <div className='flex justify-center '>
                 <MyMapTable data={searchResults} />
-                <MyMap data={searchResults} />
             </div>
             <SearchButton />
 

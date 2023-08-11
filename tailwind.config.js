@@ -6,6 +6,8 @@ module.exports = {
     extend: {},
     fontFamily: {
       Cafe24Shiningstar: ["Cafe24Shiningstar"],
+      Myfont: ['Noto Sans KR', "sans-serif"],
+
     },
   },
   plugins: [ require('@tailwindcss/forms'),
