@@ -30,7 +30,7 @@ export default function MyLocationModal({ showModal, setShowModal, index }) {
                 <TEModalDialog>
                     <TEModalContent>
                         <TEModalHeader>
-                            <h5 className="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">
+                            <h5 className="text-xl font-medium leading-normal text-neutral-800 ">
                                 축제 지도
                             </h5>
                             <button

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Map, MapMarker, ZoomControl } from "react-kakao-maps-sdk";
-export default function MyMap(probs) {
+export default function MyMap(props) {
   //처리해야해 ㅠㅠㅠ
   const [state, setState] = useState()
 
-  const latitude = probs.latitude;
-  const longitude = probs.longitude;
-  const festivalName = probs.festivalName;
+  const latitude = props.latitude;
+  const longitude = props.longitude;
+  const festivalName = props.festivalName;
 
   console.log("map콘솔" + latitude, longitude, festivalName);
 

@@ -19,7 +19,7 @@ export default function MyNav() {
         { name: 'Home', href: '/', current: location.pathname === '/' },
         { name: 'Search', href: '/searchPage', current: location.pathname === '/searchPage' },
         { name: 'Festival', href: '/festival', current: location.pathname === '/festival' },
-        { name: 'Accomodation', href: '/accomodation', current: location.pathname === '/accomodation' },
+        { name: 'Accomodation', href: '/AccomdationPage', current: location.pathname === '/AccomdationPage'},
     ];
 
 

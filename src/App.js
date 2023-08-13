@@ -7,22 +7,26 @@ import {
 } from 'recoil';
 import SearchButton from './components/SearchButton';
 import SearchPage from './views/SearchPage';
-import DetailPage from './views/DetailPage';
+
+import AccomodationPage from './views/AccomodationPage';
+import MyAcoMap from './components/MyAcoMap';
 
 function App() {
   return (
-    
+
     <RecoilRoot >
-      
+
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path='/login' element={<SignInAddSignUpPage />} />
-        <Route path='/search' element={<SearchButton/>}/>
-        <Route path='/searchPage' element={<SearchPage/>}/>
-        <Route path="/DetailPage" element={<DetailPage/>}/>
+        <Route path='/search' element={<SearchButton />} />
+        <Route path='/searchPage' element={<SearchPage />} />
+
+        <Route path="/AccomdationPage" element={<AccomodationPage />} />
+        <Route path="/acoMap" element={<MyAcoMap />} />
       </Routes>
     </RecoilRoot>
- 
+
   );
 }
 

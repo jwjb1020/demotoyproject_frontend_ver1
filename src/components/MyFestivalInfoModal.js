@@ -1,7 +1,14 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { TEModal, TEModalBody, TEModalContent, TEModalDialog, TEModalFooter, TEModalHeader, TERipple } from 'tw-elements-react';
 
 export default function MyFestivalInfoModal({showModal, setShowModal, index, festivalDetail }) {
+  
+  //숙소 페이지로 처음 선택된 인덱스값 보내주기
+  const navigate = useNavigate();
+  const goToAco = () => {
+    navigate("/AccomdationPage",{state:{ indexkey : index}})
+  }
     
       // 날짜 형식 변환 함수
   function formatDate(dateISOString) {
@@ -20,7 +27,7 @@ export default function MyFestivalInfoModal({showModal, setShowModal, index, fes
            <TEModalHeader>
              {/* <!--Modal title--> */}
              {index !== null && (
-               <h5 className="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200">
+               <h5 className="text-xl font-medium leading-normal text-black">
                  {festivalDetail[index][0]}
                </h5>)}
              {/* <!--Close button--> */}
@@ -66,6 +73,7 @@ export default function MyFestivalInfoModal({showModal, setShowModal, index, fes
 
            </TEModalBody></div>)}
            <TEModalFooter>
+            <button onClick={goToAco}>가장 가까운 숙소 찾기</button>
              <TERipple rippleColor="light">
                <button
                  type="button"
