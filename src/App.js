@@ -10,6 +10,7 @@ import SearchPage from './views/SearchPage';
 
 import AccomodationPage from './views/AccomodationPage';
 import MyAcoMap from './components/MyAcoMap';
+import FestivalPage from './views/FestivalPage';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path='/login' element={<SignInAddSignUpPage />} />
         <Route path='/search' element={<SearchButton />} />
         <Route path='/searchPage' element={<SearchPage />} />
-
+        <Route path='/FestivalPage' element={<FestivalPage/>}/>
         <Route path="/AccomdationPage" element={<AccomodationPage />} />
         <Route path="/acoMap" element={<MyAcoMap />} />
       </Routes>

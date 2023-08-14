@@ -12,6 +12,8 @@ export default function MyAcoMap(props) {
         width: "100%",
         height: "100%",
     })
+    // 인포윈도우 Open 여부를 저장하는 state 입니다.
+    const [isOpen, setIsOpen] = useState(false)
     const index = props.index;
     const acoData = props.acoData;
     const hoveredMarkerIndex = props.hoveredMarkerIndex;
@@ -69,25 +71,34 @@ export default function MyAcoMap(props) {
             >
                 <ZoomControl />
 
-                {acoName.map((position, index) => (
+                {acoName.map((position, idx) => (
                     <MapMarker
-                        key={index}
+                        key={idx}
                         position={{
                             lat: position.latitude,
-                            lng: position.longitude
-                        }} // 마커를 표시할 위치
-                        image={{
-                            src: index === hoveredMarkerIndex ? "assets/flag.png" : "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-                            size: {
-                                width: 24,
-                                height: 35
-                            }, // 마커이미지의 크기입니다
-                       
-                            
-
+                            lng: position.longitude,
                         }}
-                        title={position.name} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-                    />
+                        image={{
+                            src: idx === hoveredMarkerIndex ? "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png" : "assets/Group 1.png",
+                            size: idx === hoveredMarkerIndex ? {
+                                width: 24,
+                                height: 35,
+                            } : {
+                                width: 10,
+                                height: 10
+                            },
+                        }}
+                        /// 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+                        onClick={() => setIsOpen(true)}
+                        title={position.name}
+                    >
+                        {isOpen && idx === hoveredMarkerIndex && (
+                            <div style={{ minWidth: "150px" }}>
+                               
+                                <div style={{ padding: "5px", color: "#000" }}>{position.name}</div>
+                            </div>
+                        )}
+                    </MapMarker>
                 ))}
                 <MapMarker // 마커를 생성합니다
                     position={{

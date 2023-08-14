@@ -14,13 +14,13 @@ export default function SignInAddSignUpPage() {
 
     const [userId, setUserId] = useState("");
     const [userPassword, setUserPassword] = useState("");
-    const [cookies, setCookies] = useCookies();
+    const [cookies, setCookies] = useCookies(["token"]);
     const { user, setUser } = userUserStore();
     const [userName, setUserName] = useState("");
     const [userPasswordCheck, setUserPasswordCheck] = useState("");
 
     const navigate = useNavigate();
-    const isLogin = useSetRecoilState(isLoggedInState);
+    // const isLogin = useSetRecoilState(isLoggedInState);
 
     const ipAddress = "http://localhost:8080"
 
@@ -62,8 +62,8 @@ export default function SignInAddSignUpPage() {
                 setCookies("token", token, { expires });
                 setUser(userMember);
                 
-                //로그인 했을때 로그인 정보 전역 변수로 설정
-                isLogin(true)
+                // //로그인 했을때 로그인 정보 전역 변수로 설정
+                // isLogin(true)
                 //로그인 성공했을때 메인페이지로 돌아옴
                 navigate("/");
 
