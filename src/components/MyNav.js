@@ -25,7 +25,7 @@ export default function MyNav() {
 
 
     return (
-        <Disclosure as="nav" className="bg-[#714288] opacity-30">
+        <Disclosure as="nav" className="bg-[#714288] opacity-30 ">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

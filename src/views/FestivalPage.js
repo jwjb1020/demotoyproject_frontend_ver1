@@ -7,30 +7,36 @@ import axios from "axios";
 
 export default function FestivalPage() {
     const [festivalAddress, SetFestivalAddress] = useState();
-
-    useEffect(()=>{
+    const [searchResult, setSearchResult] = useState([]); // 검색 결과를 저장할 상태 추가
+    useEffect(() => {
         axios.get("http://localhost:8080/search/fesitvalList")
-        .then((res)=>{
-            const data = res.data;
-            console.log("data",data);
-            SetFestivalAddress(data);
-            
-           
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-        
-        
+            .then((res) => {
+                const data = res.data;
+                console.log("data", data);
+                SetFestivalAddress(data);
 
-    },[]);
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+
+
+    }, []);
+
+    // 검색 버튼을 눌렀을 때 실행되는 함수
+    const searchFestival = (result) => {
+        setSearchResult(result);
+    }
 
     return (
-        <>
+        <div className='h-screen overflow-auto'>
             <MyNav />
-            <FestivalListHeader addressData={festivalAddress}/>
-            <FestivalListMain/>
-            <FestivalListFooter/>
-        </>
+            <FestivalListHeader  addressData={festivalAddress} onSearch={searchFestival} />
+            {/* 검색 결과를 FestivalListMain 컴포넌트에 전달하여 렌더링 */}
+            <FestivalListMain searchResult={searchResult} />
+           
+        </div>
     )
 }
