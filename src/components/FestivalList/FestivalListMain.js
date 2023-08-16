@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
 export default function FestivalListMain({ searchResult }) {
+
   const itemsPerPage = 9; // 한 페이지당 보여줄 항목 수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태 추가
   useEffect(() => {
+
     // 검색 결과가 변경될 때마다 페이지 상태 초기화
     setCurrentPage(1);
   }, [searchResult]);
@@ -27,21 +29,22 @@ export default function FestivalListMain({ searchResult }) {
 
   return (
     <div className=''>
-      <div className='flex flex-wrap justify-center'>
+      {searchResult.length != 0 ? <div className='flex flex-wrap justify-center'>
         {searchResult.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item, index) => (
-          <div key={index} className="max-w-sm rounded overflow-hidden shadow-lg my-4 mx-8 bg-gray-400">
+          <div key={index} className="max-w-sm rounded-md overflow-hidden shadow-lg my-4 mx-8 bg-[#6076a7]">
             <img className="w-full" src="assets/Link.png" alt="Sunset in the mountains" />
             <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-2">{item.festivalName}</div>
-              <p className="text-gray-700 text-base">축제 번호 : {item.festivalId}</p>
-              <p className="text-gray-700 text-base">주소 : {item.address}</p>
-              <p className="text-gray-700 text-base">홈페이지 : <a href={item.homepage} target='_blank'>{item.homepage}</a></p>
-              <p className="text-gray-700 text-base">연락처 : {item.tel}</p>
-              <p className="text-gray-700 text-base">축제내용 : {item.content}</p>
+              <div className="font-bold text-xl text-slate-50 mb-2">{item.festivalName}</div>
+              <p className="text-white text-base font-Myfont">축제 번호 : {item.festivalId}</p>
+              <p className="text-white text-base font-Myfont">주소 : {item.address}</p>
+              <p className="text-white text-base font-Myfont">홈페이지 : <a href={item.homepage} target='_blank'>{item.homepage}</a></p>
+              <p className="text-white text-base font-Myfont">연락처 : {item.tel}</p>
+              <p className="text-white text-base font-Myfont">축제내용 : {item.content}</p>
             </div>
           </div>
         ))}
-      </div>
+      </div> : <div className='flex justify-center'>검색된 결과가 없습니다.</div>}
+
 
 
       {/* 페이징 컨트롤과 페이지 정보를 렌더링 */}
@@ -70,7 +73,7 @@ export default function FestivalListMain({ searchResult }) {
         ))}
         {endPage !== totalPages && <span className="mx-2">...</span>}
         {endPage !== totalPages && (
-          <button onClick={() => handlePageClick(totalPages)} className={`mx-2 ${currentPage === totalPages ? 'font-bold' : ''}`}>
+          <button onClick={() => handlePageClick(totalPages)} className={`mx-2 ${currentPage === totalPages ? 'font-bold text-[#4c3455]' : ''}`}>
             {totalPages}
           </button>
         )}

@@ -32,16 +32,17 @@ export default function FestivalListHeader({ addressData, onSearch }) {
     };
 
     const handleSearch = (result) => {
+     
         // 검색 결과를 FestivalPage 컴포넌트의 상태로 전달
         onSearch(result);
     };
     
 
     return (
-        <div className='flex justify-center sticky top-0'>
+        <div className='flex justify-center sticky top-0 mt-6  gap-x-4 opacity-70'>
             {/* 시도 선택 드롭다운 */}
-            <select value={selectedSido} onChange={handleSidoChange}>
-                <option value="">시도 선택</option>
+            <select value={selectedSido} onChange={handleSidoChange} className='rounded-lg'>
+                <option value="">시도 전체 선택</option>
                 {uniqueSidoList.map((item) => (
                     <option key={item} value={item}>
                         {item}
@@ -50,8 +51,8 @@ export default function FestivalListHeader({ addressData, onSearch }) {
             </select>
 
             {/* 선택된 시도에 따른 시군구 목록 드롭다운 */}
-            <select value={selectedSigungu} onChange={handleSigunguChange}>
-                <option value="">시군구 선택</option>
+            <select value={selectedSigungu} onChange={handleSigunguChange} className='rounded-lg'>
+                <option value="">시군구 전체 선택</option>
                 {sigunguList.map((sigungu, index) => (
                     <option key={index} value={sigungu.sigungu}>
                         {sigungu.sigungu}
@@ -64,6 +65,10 @@ export default function FestivalListHeader({ addressData, onSearch }) {
                 selectedSido={selectedSido}
                 selectedSigungu={selectedSigungu}
                 onSearch={handleSearch}
+                resetSelectedValues={() => {
+                    setSelectedSido("");
+                    setSelectedSigungu("");
+                }}
             />
         </div>
     );

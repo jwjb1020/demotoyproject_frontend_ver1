@@ -55,7 +55,7 @@ export default function MyMap(props) {
         </MapMarker>
       </Map>
       <button
-        onClick={() => setStyle({ width: "100%", height: "450px" })}
+        onClick={() => setStyle({ width: "100%", height: "450px" }) } className='text-[#4F4F4F]  font-Myfont hover:scale-110'
       >
         지도 크기 바꾸기
       </button>
